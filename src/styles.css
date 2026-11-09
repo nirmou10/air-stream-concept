@@ -36,6 +36,7 @@
   --color-navy-foreground: var(--navy-foreground);
   --color-navy-muted: var(--navy-muted);
   --color-navy-border: var(--navy-border);
+  --color-steel: var(--steel);
   --color-placeholder: var(--placeholder);
   --color-placeholder-foreground: var(--placeholder-foreground);
 }
@@ -68,6 +69,8 @@
   --navy-foreground: oklch(0.97 0.005 85);
   --navy-muted: oklch(0.8 0.02 260);
   --navy-border: oklch(0.32 0.05 262);
+  /* steel blue accent for links and highlights (orange stays for actions) */
+  --steel: oklch(0.55 0.09 235);
   /* placeholder markers */
   --placeholder: oklch(0.95 0.06 90);
   --placeholder-foreground: oklch(0.38 0.08 70);
@@ -125,7 +128,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--steel);
 }
 
 @utility ph {

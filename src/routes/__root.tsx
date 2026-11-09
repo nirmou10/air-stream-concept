@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 function NotFoundComponent() {
   return (
@@ -78,15 +80,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Texas HVAC Service — Prototype" },
-      { name: "description", content: "Prototype HVAC service website for Texas." },
+      { title: "Air-Stream HVAC Concept Redesign | Commercial, Government, Industrial" },
+      {
+        name: "description",
+        content:
+          "Unofficial concept redesign for Air-Stream Air Conditioning and Heating Co. Inc. of San Antonio, TX. Commercial, government, and industrial HVAC services.",
+      },
       { name: "robots", content: "noindex, nofollow" },
+      { property: "og:title", content: "Air-Stream HVAC Concept Redesign" },
+      {
+        property: "og:description",
+        content:
+          "Commercial, government, and industrial HVAC service and installation in San Antonio, Texas. Unofficial concept redesign.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://pixel-perfect-one-sable.vercel.app/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://pixel-perfect-one-sable.vercel.app/og-image.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -121,8 +138,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-card focus:p-3"
+      >
+        Skip to content
+      </a>
+      <SiteHeader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <SiteFooter />
     </QueryClientProvider>
   );
 }

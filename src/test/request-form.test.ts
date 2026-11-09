@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { requestSchema } from "@/components/site/RequestForm";
 
 const valid = {
-  service: "ac-repair",
-  property: "home",
+  service: "ac",
+  property: "commercial",
   problem: "AC is blowing warm air",
-  zip: "75001",
+  zip: "78219",
   day: "weekday",
   window: "morning",
   name: "Test User",
@@ -13,12 +13,12 @@ const valid = {
   contact: "call",
 };
 
-describe("demo request form rules", () => {
-  it("accepts a complete request", () => {
+describe("demo inquiry form rules", () => {
+  it("accepts a complete inquiry", () => {
     expect(requestSchema.safeParse(valid).success).toBe(true);
   });
   it("requires a 5-digit ZIP", () => {
-    expect(requestSchema.safeParse({ ...valid, zip: "7500" }).success).toBe(false);
+    expect(requestSchema.safeParse({ ...valid, zip: "7821" }).success).toBe(false);
   });
   it("requires a 10-digit phone", () => {
     expect(requestSchema.safeParse({ ...valid, phone: "555-0100" }).success).toBe(false);

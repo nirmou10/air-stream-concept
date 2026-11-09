@@ -1,97 +1,155 @@
-// All copy and placeholder business data lives here (English). Keep keys stable so a
-// Spanish dictionary can be added later. Never replace placeholders with invented facts.
+// All copy and business data lives here (English). Keep keys stable so a
+// Spanish dictionary can be added later. Only company-published facts appear;
+// do not add licenses, prices, reviews, or other unverified details.
 
-export type ServiceId = "ac-repair" | "installation" | "maintenance" | "heating" | "not-sure";
+export type ServiceId = "ac" | "heating" | "maintenance" | "ductless";
+export type AudienceId = "commercial" | "government" | "industrial";
 
 export const business = {
-  name: "[Business Name]",
-  phoneDisplay: "[Phone — to be confirmed]",
-  phoneHref: "", // empty until a real number is confirmed
-  license: "[TACLA License # — to be confirmed]",
-  insurance: "[Insurance details — to be confirmed]",
-  experience: "[Years in business — to be confirmed]",
-  serviceArea: "[Service area in Texas — to be confirmed]",
-  hours: "[Business hours — to be confirmed]",
-  emergency: "[Emergency / after-hours availability — to be confirmed]",
+  brand: "Air-Stream",
+  fullName: "Air-Stream Air Conditioning and Heating Co. Inc.",
+  address: "4343 Dividend, San Antonio, TX 78219",
+  phoneLocal: { display: "210-533-3264", href: "tel:+12105333264" },
+  phoneTollFree: { display: "800-223-8017", href: "tel:+18002238017" },
+  serviceArea: "San Antonio, Texas",
 };
 
-export const services: { id: Exclude<ServiceId, "not-sure">; title: string; body: string }[] = [
+export const trustIndicators = [
+  "Serving San Antonio Since 1974",
+  "24/7/365 Service Availability",
+  "NATE-Certified Technicians",
+];
+
+export const cta = {
+  primary: "Request a Commercial HVAC Consultation",
+};
+
+export const services: {
+  id: ServiceId;
+  title: string;
+  body: string;
+  path: string;
+}[] = [
   {
-    id: "ac-repair",
-    title: "AC repair & troubleshooting",
-    body: "Warm air, weak airflow, strange noises, or a system that won't turn on.",
-  },
-  {
-    id: "installation",
-    title: "Installation & replacement",
-    body: "New or replacement heating and cooling systems sized for your property.",
-  },
-  {
-    id: "maintenance",
-    title: "Maintenance & inspections",
-    body: "Routine check-ups that help keep equipment running efficiently.",
+    id: "ac",
+    title: "Air Conditioning Service & Installation",
+    body: "Service, repair, and installation of air conditioning systems for commercial buildings, performed by NATE-certified technicians.",
+    path: "/air-conditioning-service-installation",
   },
   {
     id: "heating",
-    title: "Heating repair & maintenance",
-    body: "Furnace and heat pump service for the cooler months.",
+    title: "Heating System Service & Installation",
+    body: "Heating system service and installation for offices, facilities, and industrial properties across San Antonio.",
+    path: "/heating-service-installation",
+  },
+  {
+    id: "maintenance",
+    title: "HVAC Maintenance Agreements",
+    body: "Planned maintenance agreements that help keep commercial HVAC systems efficient, compliant, and ready for peak demand.",
+    path: "/hvac-maintenance-agreements",
+  },
+  {
+    id: "ductless",
+    title: "Ductless HVAC Installation & Service",
+    body: "Ductless HVAC installation and service for spaces where traditional ductwork is not practical or efficient.",
+    path: "/ductless-hvac-services",
   },
 ];
 
-export const serviceOptions: { id: ServiceId; label: string }[] = [
-  { id: "ac-repair", label: "AC repair" },
-  { id: "installation", label: "Installation / replacement" },
-  { id: "maintenance", label: "Maintenance / inspection" },
-  { id: "heating", label: "Heating" },
-  { id: "not-sure", label: "Not sure" },
+export const serviceOptions: { id: ServiceId; label: string }[] = services.map((s) => ({
+  id: s.id,
+  label: s.title,
+}));
+
+export const audiences: { id: AudienceId; title: string; body: string; path: string }[] = [
+  {
+    id: "commercial",
+    title: "Commercial",
+    body: "Offices, retail, medical, and mixed use properties that need dependable climate control during business hours.",
+    path: "/commercial",
+  },
+  {
+    id: "government",
+    title: "Government",
+    body: "Public buildings and facilities that require professional, dependable HVAC service and support.",
+    path: "/government",
+  },
+  {
+    id: "industrial",
+    title: "Industrial",
+    body: "Warehouses, plants, and industrial facilities with demanding heating and cooling requirements.",
+    path: "/industrial",
+  },
 ];
 
-export const audiences = [
-  { title: "Homeowners", body: "Comfort and reliable systems for your household." },
-  { title: "Property owners", body: "Rentals and multi-unit properties that need dependable service." },
-  { title: "Small businesses", body: "Offices and shops that need a comfortable space for staff and customers." },
+export const processSteps = [
+  {
+    title: "Tell us about your facility",
+    body: "Share your building type, equipment details, and goals through the inquiry form or by phone. The more context you provide, the better we can prepare for the first conversation.",
+  },
+  {
+    title: "We review your needs",
+    body: "The Air-Stream team follows up to understand the scope of work, your timeline, and any site conditions that matter for planning.",
+  },
+  {
+    title: "Site assessment",
+    body: "A technician evaluates your existing systems and building requirements, then recommends the options that fit your facility.",
+  },
+  {
+    title: "Scope and planning",
+    body: "You receive a clear scope of work and schedule before any commitment is made, so there are no surprises down the line.",
+  },
+  {
+    title: "Service or installation",
+    body: "NATE-certified technicians complete the work with careful attention to your operations, keeping disruption to your facility to a minimum.",
+  },
 ];
 
-export const symptoms: { title: string; body: string; service: ServiceId }[] = [
-  { title: "AC blowing warm air", body: "Often a repair visit.", service: "ac-repair" },
-  { title: "Strange noises", body: "Rattling, grinding, or squealing.", service: "ac-repair" },
-  { title: "High energy bills", body: "A check-up may help find the cause.", service: "maintenance" },
-  { title: "System 10–15+ years old", body: "Worth discussing replacement options.", service: "installation" },
-];
-
-export const steps = [
-  { title: "Request", body: "Tell us what's going on using the form or by phone." },
-  { title: "We confirm a time", body: "The team contacts you to schedule a visit." },
-  { title: "Technician visit", body: "A technician inspects the system and explains options." },
+export const credentials = [
+  {
+    title: "Serving San Antonio Since 1974",
+    body: "Company-published: serving San Antonio since 1974.",
+  },
+  {
+    title: "24/7/365 Service Availability",
+    body: "Around the clock availability for facilities that cannot afford downtime.",
+  },
+  {
+    title: "NATE-Certified Technicians",
+    body: "Technicians certified by North American Technician Excellence.",
+  },
 ];
 
 export const faqs = [
   {
     q: "What areas do you serve?",
-    a: `${business.serviceArea}`,
+    a: "Air-Stream serves San Antonio, Texas. The company is located at 4343 Dividend, San Antonio, TX 78219.",
   },
   {
-    q: "Do you offer emergency service?",
-    a: `${business.emergency}`,
+    q: "Do you offer 24/7 service?",
+    a: "Air-Stream advertises 24/7/365 service availability. Call 210-533-3264 or 800-223-8017 to discuss response for your facility.",
   },
   {
-    q: "How often should my system be maintained?",
-    a: "Many manufacturers recommend a professional check-up about once a year for each system (cooling and heating). Check your equipment's manual for specifics.",
+    q: "Are your technicians certified?",
+    a: "Yes. Air-Stream states that its technicians are NATE-certified.",
   },
   {
-    q: "Can you give me a price online?",
-    a: "No. Pricing depends on an on-site assessment. Request service and the team will follow up.",
+    q: "Do you work with government and industrial facilities?",
+    a: "Air-Stream publishes services for commercial and government facilities. For industrial needs, please contact the company directly.",
   },
   {
-    q: "What should I do if I smell gas?",
+    q: "Can I get pricing online?",
+    a: "No. Pricing depends on an assessment of your facility and systems. Request a consultation to discuss your project.",
+  },
+  {
+    q: "What should I do if I smell gas or suspect a leak?",
     a: "Leave the building right away, avoid using switches or flames, and call 911 or your gas utility from a safe place.",
   },
 ];
 
 export const disclaimers = {
-  prototype:
-    "This website is a prototype for demonstration purposes. Business details shown in brackets are placeholders and have not been confirmed.",
-  form: "Demo only — please do not enter real personal information. Nothing is sent or stored.",
-  assistant: "Prototype assistant — general guidance only, not a diagnosis or quote.",
-  image: "Illustrative image",
+  footerUnofficial:
+    "Unofficial concept redesign. Not affiliated with Air-Stream Air Conditioning and Heating Co. Inc.",
+  footerImages: "Images are licensed stock, for concept purposes.",
+  form: "Demo only, no data is sent.",
 };
