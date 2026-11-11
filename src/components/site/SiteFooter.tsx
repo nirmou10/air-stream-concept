@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Fan, MapPin, Phone } from "lucide-react";
 import { audiences, business, disclaimers, services } from "@/content/site";
 
@@ -36,9 +37,9 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {services.map((s) => (
               <li key={s.id}>
-                <a href={s.path} className="text-navy-muted hover:text-navy-foreground">
+                <Link to={s.path} className="text-navy-muted hover:text-navy-foreground">
                   {s.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

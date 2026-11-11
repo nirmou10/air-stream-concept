@@ -4,6 +4,11 @@
 
 export type ServiceId = "ac" | "heating" | "maintenance" | "ductless";
 export type AudienceId = "commercial" | "government" | "industrial";
+export type ServicePath =
+  | "/air-conditioning-service-installation"
+  | "/heating-service-installation"
+  | "/hvac-maintenance-agreements"
+  | "/ductless-hvac-services";
 
 export const business = {
   brand: "Air-Stream",
@@ -28,7 +33,7 @@ export const services: {
   id: ServiceId;
   title: string;
   body: string;
-  path: string;
+  path: ServicePath;
   image: string;
   imageAlt: string;
   pricingBadge: string;
@@ -80,6 +85,153 @@ export const serviceOptions: { id: ServiceId; label: string }[] = services.map((
   id: s.id,
   label: s.title,
 }));
+
+export const servicePages: Record<
+  ServiceId,
+  {
+    metaTitle: string;
+    metaDescription: string;
+    intro: string;
+    problems: string[];
+    advertised: string[];
+    scope: string[];
+    benefits: string[];
+    pricingNote: string;
+  }
+> = {
+  ac: {
+    metaTitle: "Air Conditioning Service & Installation in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream provides air conditioning service, repair, and installation for commercial, government, and industrial facilities in San Antonio, Texas.",
+    intro:
+      "Air-Stream provides air conditioning service, repair, and installation for commercial, government, and industrial facilities across San Antonio.",
+    problems: [
+      "Uneven cooling or hot spots across occupied areas",
+      "Rising energy use without a matching change in comfort",
+      "Aging equipment that needs repair or planned replacement",
+      "Tenant and occupant complaints about comfort and reliability",
+    ],
+    advertised: [
+      "NATE-certified technicians",
+      "24/7/365 service availability",
+      "Serving San Antonio since 1974",
+      "Air conditioning service and installation",
+    ],
+    scope: [
+      "Inspection and diagnosis of the existing system",
+      "Repair of system components and controls",
+      "Assessment of repair versus replacement options",
+      "Installation of new air conditioning equipment",
+      "Startup and performance check after the work is complete",
+    ],
+    benefits: [
+      "Comfortable, consistent temperatures support productivity and daily operations",
+      "Efficient systems can help control utility costs over time",
+      "Proactive service helps reduce the chance of disruptive breakdowns during business hours",
+    ],
+    pricingNote:
+      "Air conditioning service and installation is quoted on a project basis once the company has assessed the facility and the scope of work.",
+  },
+  heating: {
+    metaTitle: "Heating System Service & Installation in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream provides heating system service and installation for offices, facilities, and industrial properties in San Antonio, Texas.",
+    intro:
+      "Air-Stream provides heating system service and installation for offices, facilities, and industrial properties across San Antonio.",
+    problems: [
+      "Cold zones or uneven heat during colder months",
+      "Equipment that struggles to reach setpoint on cold days",
+      "Noisy or inefficient heating equipment",
+      "Aging systems that are due for repair or replacement",
+    ],
+    advertised: [
+      "NATE-certified technicians",
+      "24/7/365 service availability",
+      "Serving San Antonio since 1974",
+      "Heating system service and installation",
+    ],
+    scope: [
+      "Inspection and diagnosis of the heating system",
+      "Repair of heating system components and controls",
+      "Assessment of repair versus replacement options",
+      "Installation of new heating equipment",
+      "Startup and system check after the work is complete",
+    ],
+    benefits: [
+      "Reliable heat keeps facilities comfortable and operations running",
+      "Efficient heating systems support lower operating costs",
+      "Planned service helps avoid cold-weather downtime",
+    ],
+    pricingNote:
+      "Heating work is quoted per system after an assessment of the facility and the equipment involved.",
+  },
+  maintenance: {
+    metaTitle: "HVAC Maintenance Agreements in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream offers HVAC maintenance agreements for commercial, government, and industrial facilities in San Antonio, Texas.",
+    intro:
+      "Air-Stream offers HVAC maintenance agreements for commercial, government, and industrial facilities that want planned, recurring attention for their systems.",
+    problems: [
+      "Skipped seasonal tune-ups and filter changes",
+      "Small issues that grow into larger repairs",
+      "No record of who serviced the equipment or when",
+      "Systems that drift out of adjustment between service visits",
+    ],
+    advertised: [
+      "NATE-certified technicians",
+      "24/7/365 service availability",
+      "Serving San Antonio since 1974",
+      "Maintenance agreement service",
+    ],
+    scope: [
+      "Scheduled recurring maintenance visits",
+      "Inspection of system components and controls",
+      "Filter and belt checks with replacements as needed",
+      "Performance review and recommended follow-up",
+      "Documentation of each visit for your records",
+    ],
+    benefits: [
+      "Consistent upkeep supports efficient, reliable system operation",
+      "Early detection of wear helps prevent unexpected downtime",
+      "A consistent maintenance record supports planning and budgeting",
+    ],
+    pricingNote:
+      "Maintenance agreements are structured as an annual arrangement and are shaped by the systems and coverage your facility needs.",
+  },
+  ductless: {
+    metaTitle: "Ductless HVAC Installation & Service in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream provides ductless HVAC installation and service for facilities in San Antonio, Texas where traditional ductwork is not practical.",
+    intro:
+      "Air-Stream provides ductless HVAC installation and service for facilities where traditional ductwork is not practical or efficient.",
+    problems: [
+      "Spaces that cannot accommodate conventional ductwork",
+      "Rooms with uneven temperatures or hot and cold spots",
+      "Additions or retrofits where extending ducts is disruptive",
+      "Zoned comfort needs in offices, retail, or mixed use areas",
+    ],
+    advertised: [
+      "NATE-certified technicians",
+      "24/7/365 service availability",
+      "Serving San Antonio since 1974",
+      "Ductless HVAC installation and service",
+    ],
+    scope: [
+      "Assessment of the space and its zoning needs",
+      "Installation of ductless indoor and outdoor units",
+      "Line set and electrical connections",
+      "System commissioning and airflow adjustment",
+      "Ongoing service and maintenance of ductless systems",
+    ],
+    benefits: [
+      "Zone-by-zone control matches comfort to how each area is used",
+      "Ductless systems can reduce the losses associated with ductwork",
+      "Flexible installation fits renovations, additions, and unique floor plans",
+    ],
+    pricingNote:
+      "Ductless work is quoted per zone or as a project after an assessment of the space and systems involved.",
+  },
+};
 
 export const audiences: {
   id: AudienceId;

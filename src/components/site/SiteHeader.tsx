@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { ChevronDown, Fan, Menu, Phone } from "lucide-react";
-import { audiences, business, cta, services } from "@/content/site";
+import { audiences, business, cta, services, type ServicePath } from "@/content/site";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,7 +46,7 @@ function NavDropdown({
   items,
 }: {
   label: string;
-  items: { href: string; label: string }[];
+  items: { href?: string; to?: ServicePath; label: string }[];
 }) {
   return (
     <DropdownMenu>
@@ -55,10 +56,16 @@ function NavDropdown({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-72">
         {items.map((item) => (
-          <DropdownMenuItem key={item.href} asChild>
-            <a href={item.href} className="block">
-              {item.label}
-            </a>
+          <DropdownMenuItem key={item.to ?? item.href} asChild>
+            {item.to ? (
+              <Link to={item.to} className="block">
+                {item.label}
+              </Link>
+            ) : (
+              <a href={item.href} className="block">
+                {item.label}
+              </a>
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
@@ -70,7 +77,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   const serviceItems = services.map((s) => ({
-    href: s.path,
+    to: s.path,
     label: s.title
       .replace(" Service & Installation", "")
       .replace(" Installation & Service", "")
@@ -130,14 +137,14 @@ export function SiteHeader() {
                 Services
               </p>
               {services.map((s) => (
-                <a
+                <Link
                   key={s.id}
-                  href={s.path}
+                  to={s.path}
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-3 py-2.5 hover:bg-navy-border hover:text-navy-foreground"
                 >
                   {s.title}
-                </a>
+                </Link>
               ))}
               <p className="px-3 pb-1 pt-4 text-xs font-semibold uppercase tracking-wider text-navy-muted">
                 Who we serve

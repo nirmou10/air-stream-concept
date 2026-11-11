@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -46,6 +46,19 @@ export const Route = createFileRoute("/")({
       { name: "twitter:image", content: "https://pixel-perfect-one-sable.vercel.app/og-image.png" },
     ],
   }),
+  validateSearch: (
+    search: Record<string, unknown>,
+  ): {
+    service?: ServiceId;
+    property?: AudienceId;
+  } => {
+    const result: { service?: ServiceId; property?: AudienceId } = {};
+    const service = services.find((s) => s.id === search["service"])?.id;
+    const property = audiences.find((a) => a.id === search["property"])?.id;
+    if (service) result.service = service;
+    if (property) result.property = property;
+    return result;
+  },
   component: Index,
 });
 
@@ -119,7 +132,13 @@ function HeroInquiry({
 }
 
 function Index() {
+  const search = Route.useSearch();
   const [prefill, setPrefill] = useState<Prefill | null>(null);
+
+  useEffect(() => {
+    if (!search.service) return;
+    setPrefill({ service: search.service, property: search.property, nonce: Date.now() });
+  }, [search.service, search.property]);
 
   function continueToForm(service: ServiceId, property: AudienceId) {
     setPrefill({ service, property, nonce: Date.now() });
@@ -251,12 +270,12 @@ function Index() {
                   >
                     {s.quoteLabel} <ArrowRight className="h-4 w-4" aria-hidden />
                   </button>
-                  <a
-                    href={s.path}
+                  <Link
+                    to={s.path}
                     className="inline-flex min-h-11 items-center gap-1 self-start text-sm font-bold text-foreground underline decoration-steel decoration-2 underline-offset-4"
                   >
                     Learn More <ArrowRight className="h-4 w-4" aria-hidden />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>
@@ -341,9 +360,9 @@ function Index() {
               <ul className="mt-3 space-y-2 text-sm text-navy-muted">
                 {services.map((s) => (
                   <li key={s.id}>
-                    <a href={s.path} className="hover:text-navy-foreground">
+                    <Link to={s.path} className="hover:text-navy-foreground">
                       {s.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
