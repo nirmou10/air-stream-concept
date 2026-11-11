@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { Fan, Menu, Phone } from "lucide-react";
+import { ChevronDown, Fan, Menu, Phone } from "lucide-react";
 import { audiences, business, cta, services } from "@/content/site";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 function CtaLink({ className = "", onClick }: { className?: string; onClick?: () => void }) {
@@ -8,60 +14,86 @@ function CtaLink({ className = "", onClick }: { className?: string; onClick?: ()
     <a
       href="/#consultation"
       onClick={onClick}
-      className={`inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground transition hover:brightness-105 ${className}`}
+      className={`inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground transition hover:brightness-105 ${className}`}
     >
       {cta.primary}
     </a>
   );
 }
 
+function Wordmark() {
+  return (
+    <span className="flex items-center gap-2.5">
+      <span
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+        aria-hidden
+      >
+        <Fan className="h-5 w-5" />
+      </span>
+      <span className="flex flex-col leading-tight">
+        <span className="font-display text-lg font-bold tracking-tight">{business.brand}</span>
+        <span className="text-[11px] font-medium text-navy-muted">
+          Air Conditioning &amp; Heating
+        </span>
+      </span>
+    </span>
+  );
+}
+
+function NavDropdown({
+  label,
+  items,
+}: {
+  label: string;
+  items: { href: string; label: string }[];
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="inline-flex items-center gap-1 rounded-lg px-3 py-2 whitespace-nowrap text-navy-muted transition hover:bg-navy-border hover:text-navy-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary data-[state=open]:text-navy-foreground data-[state=open]:bg-navy-border">
+        {label}
+        <ChevronDown className="h-4 w-4" aria-hidden />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-72">
+        {items.map((item) => (
+          <DropdownMenuItem key={item.href} asChild>
+            <a href={item.href} className="block">
+              {item.label}
+            </a>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+
+  const serviceItems = services.map((s) => ({
+    href: s.path,
+    label: s.title
+      .replace(" Service & Installation", "")
+      .replace(" Installation & Service", "")
+      .replace(" Agreements", " agreements"),
+  }));
+  const audienceItems = audiences.map((a) => ({ href: a.path, label: a.title }));
 
   return (
     <header className="sticky top-0 z-40 border-b border-navy-border bg-navy text-navy-foreground">
       <div className="container-site flex h-16 items-center justify-between gap-4 md:h-20">
-        <a
-          href="/"
-          className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight"
-        >
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground"
-            aria-hidden
-          >
-            <Fan className="h-5 w-5" />
-          </span>
-          <span>
-            {business.brand}
-            <span className="hidden text-xs font-medium text-navy-muted sm:block">
-              Air Conditioning &amp; Heating
-            </span>
-          </span>
+        <a href="/" aria-label={`${business.brand} home`}>
+          <Wordmark />
         </a>
 
-        <nav
-          aria-label="Main"
-          className="hidden items-center gap-5 text-sm font-medium text-navy-muted xl:flex"
-        >
-          {services.map((s) => (
-            <a key={s.id} href={s.path} className="whitespace-nowrap hover:text-navy-foreground">
-              {s.title
-                .replace(" Service & Installation", "")
-                .replace(" Installation & Service", "")}
-            </a>
-          ))}
-          <span className="h-4 w-px bg-navy-border" aria-hidden />
-          {audiences.map((a) => (
-            <a key={a.id} href={a.path} className="whitespace-nowrap hover:text-navy-foreground">
-              {a.title}
-            </a>
-          ))}
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+          <NavDropdown label="Services" items={serviceItems} />
+          <NavDropdown label="Who we serve" items={audienceItems} />
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={business.phoneLocal.href}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold hover:text-primary"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold hover:text-primary"
           >
             <Phone className="h-4 w-4" aria-hidden />
             {business.phoneLocal.display}
@@ -124,7 +156,7 @@ export function SiteHeader() {
             <div className="mt-8 space-y-3 px-3">
               <a
                 href={business.phoneLocal.href}
-                className="flex items-center gap-2 text-lg font-bold"
+                className="flex items-center gap-2 whitespace-nowrap text-lg font-bold"
                 onClick={() => setOpen(false)}
               >
                 <Phone className="h-5 w-5 text-primary" aria-hidden />
