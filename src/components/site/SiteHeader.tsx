@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Fan, Menu, Phone } from "lucide-react";
-import { audiences, business, cta, services, type ServicePath } from "@/content/site";
+import {
+  audiences,
+  business,
+  cta,
+  services,
+  type AudiencePath,
+  type ServicePath,
+} from "@/content/site";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,7 +53,7 @@ function NavDropdown({
   items,
 }: {
   label: string;
-  items: { href?: string; to?: ServicePath; label: string }[];
+  items: { href?: string; to?: ServicePath | AudiencePath; label: string }[];
 }) {
   return (
     <DropdownMenu>
@@ -83,7 +90,7 @@ export function SiteHeader() {
       .replace(" Installation & Service", "")
       .replace(" Agreements", " agreements"),
   }));
-  const audienceItems = audiences.map((a) => ({ href: a.path, label: a.title }));
+  const audienceItems = audiences.map((a) => ({ to: a.path, label: a.title }));
 
   return (
     <header className="sticky top-0 z-40 border-b border-navy-border bg-navy text-navy-foreground">
@@ -150,14 +157,14 @@ export function SiteHeader() {
                 Who we serve
               </p>
               {audiences.map((a) => (
-                <a
+                <Link
                   key={a.id}
-                  href={a.path}
+                  to={a.path}
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-3 py-2.5 hover:bg-navy-border hover:text-navy-foreground"
                 >
                   {a.title}
-                </a>
+                </Link>
               ))}
             </nav>
             <div className="mt-8 space-y-3 px-3">

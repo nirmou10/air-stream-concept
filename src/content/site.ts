@@ -9,6 +9,7 @@ export type ServicePath =
   | "/heating-service-installation"
   | "/hvac-maintenance-agreements"
   | "/ductless-hvac-services";
+export type AudiencePath = "/commercial" | "/government" | "/industrial";
 
 export const business = {
   brand: "Air-Stream",
@@ -237,7 +238,7 @@ export const audiences: {
   id: AudienceId;
   title: string;
   body: string;
-  path: string;
+  path: AudiencePath;
   image?: string | undefined;
   imageAlt?: string | undefined;
 }[] = [
@@ -266,6 +267,135 @@ export const audiences: {
     imageAlt: "Licensed stock photo of an industrial warehouse facility",
   },
 ];
+
+export const audiencePages: Record<
+  AudienceId,
+  {
+    metaTitle: string;
+    metaDescription: string;
+    intro: string;
+    needs: string[];
+    serviceFit: { serviceId: ServiceId; sentence: string }[];
+    considerations: string[];
+  }
+> = {
+  commercial: {
+    metaTitle: "Commercial HVAC Services in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream provides HVAC service, installation, and maintenance agreement services for commercial facilities in San Antonio, Texas.",
+    intro:
+      "Air-Stream serves commercial facilities in San Antonio with air conditioning, heating, maintenance agreement, and ductless HVAC services.",
+    needs: [
+      "Consistent comfort for occupants across offices, retail, and common areas",
+      "Reliable operation during business hours with minimal disruption",
+      "Efficient systems that help manage utility costs",
+      "Flexible solutions for buildings with varied layouts and uses",
+    ],
+    serviceFit: [
+      {
+        serviceId: "ac",
+        sentence:
+          "Cooling that keeps offices, retail floors, and common areas comfortable through San Antonio summers.",
+      },
+      {
+        serviceId: "heating",
+        sentence:
+          "Heating service and installation sized for commercial spaces and building layouts.",
+      },
+      {
+        serviceId: "maintenance",
+        sentence:
+          "Recurring maintenance that fits the operating schedule of a commercial building.",
+      },
+      {
+        serviceId: "ductless",
+        sentence:
+          "Ductless options for additions, retrofits, or areas where ductwork is impractical.",
+      },
+    ],
+    considerations: [
+      "Occupant comfort and productivity shape how work is scheduled",
+      "Phased or after-hours work can limit disruption to tenants and staff",
+      "Maintenance visits can be planned around business hours and peak seasons",
+      "Efficiency and operating cost are useful inputs when planning upgrades",
+    ],
+  },
+  government: {
+    metaTitle: "Government Facility HVAC Services in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream provides HVAC services for government and public facilities in San Antonio, Texas.",
+    intro:
+      "Air-Stream serves government and public facilities in San Antonio, part of the commercial, government, and industrial work the company advertises.",
+    needs: [
+      "Dependable climate control for public buildings and offices",
+      "Service that fits facility schedules, access rules, and occupancy patterns",
+      "Documentation of work performed for facility records",
+      "Systems that support continuous daily operations",
+    ],
+    serviceFit: [
+      {
+        serviceId: "ac",
+        sentence: "Air conditioning service and installation for public buildings and facilities.",
+      },
+      {
+        serviceId: "heating",
+        sentence: "Heating system service for offices and institutional spaces.",
+      },
+      {
+        serviceId: "maintenance",
+        sentence:
+          "Maintenance agreements that create a record of recurring care for facility systems.",
+      },
+      {
+        serviceId: "ductless",
+        sentence: "Ductless solutions for spaces where conventional ductwork is not practical.",
+      },
+    ],
+    considerations: [
+      "Procurement documentation and record keeping often shape how work is planned",
+      "Access and security coordination may apply to certain facilities",
+      "Continuity of operations matters when scheduling service or installation",
+      "Planned maintenance can reduce the chance of unplanned outages",
+    ],
+  },
+  industrial: {
+    metaTitle: "Industrial HVAC Services in San Antonio | Air-Stream",
+    metaDescription:
+      "Air-Stream provides HVAC service, installation, and maintenance for industrial facilities in San Antonio, Texas.",
+    intro:
+      "Air-Stream serves industrial facilities in San Antonio, including warehouses, plants, and properties with demanding heating and cooling requirements.",
+    needs: [
+      "Systems sized for large or demanding spaces",
+      "Reliable operation that supports production uptime",
+      "Service that can work around production schedules",
+      "Solutions for spaces where standard office equipment does not fit",
+    ],
+    serviceFit: [
+      {
+        serviceId: "ac",
+        sentence: "Air conditioning service and installation for industrial spaces and facilities.",
+      },
+      {
+        serviceId: "heating",
+        sentence: "Heating system service for plants, warehouses, and industrial properties.",
+      },
+      {
+        serviceId: "maintenance",
+        sentence: "Maintenance agreements that support uptime and planned upkeep.",
+      },
+      {
+        serviceId: "ductless",
+        sentence: "Ductless options for zones or areas that need targeted conditioning.",
+      },
+    ],
+    considerations: [
+      "Production uptime and the cost of unplanned downtime drive planning",
+      "Work can often be coordinated around shift schedules and production windows",
+      "Maintenance planning can align with production calendars",
+      "Equipment selection should match the demands of the space",
+    ],
+  },
+};
 
 export const processSteps = [
   {

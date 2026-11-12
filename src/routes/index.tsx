@@ -51,12 +51,15 @@ export const Route = createFileRoute("/")({
   ): {
     service?: ServiceId;
     property?: AudienceId;
+    audience?: AudienceId;
   } => {
-    const result: { service?: ServiceId; property?: AudienceId } = {};
+    const result: { service?: ServiceId; property?: AudienceId; audience?: AudienceId } = {};
     const service = services.find((s) => s.id === search["service"])?.id;
     const property = audiences.find((a) => a.id === search["property"])?.id;
+    const audience = audiences.find((a) => a.id === search["audience"])?.id;
     if (service) result.service = service;
     if (property) result.property = property;
+    if (audience) result.audience = audience;
     return result;
   },
   component: Index,
@@ -136,9 +139,10 @@ function Index() {
   const [prefill, setPrefill] = useState<Prefill | null>(null);
 
   useEffect(() => {
-    if (!search.service) return;
-    setPrefill({ service: search.service, property: search.property, nonce: Date.now() });
-  }, [search.service, search.property]);
+    const property = search.property ?? search.audience;
+    if (!search.service && !property) return;
+    setPrefill({ service: search.service, property, nonce: Date.now() });
+  }, [search.service, search.property, search.audience]);
 
   function continueToForm(service: ServiceId, property: AudienceId) {
     setPrefill({ service, property, nonce: Date.now() });
@@ -311,12 +315,12 @@ function Index() {
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-lg font-semibold">{a.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground">{a.body}</p>
-                  <a
-                    href={a.path}
+                  <Link
+                    to={a.path}
                     className="mt-5 inline-flex min-h-11 items-center gap-1 self-start text-sm font-bold text-foreground underline decoration-steel decoration-2 underline-offset-4"
                   >
                     Learn More <ArrowRight className="h-4 w-4" aria-hidden />
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
@@ -373,9 +377,9 @@ function Index() {
               <ul className="mt-3 space-y-2 text-sm text-navy-muted">
                 {audiences.map((a) => (
                   <li key={a.id}>
-                    <a href={a.path} className="hover:text-navy-foreground">
+                    <Link to={a.path} className="hover:text-navy-foreground">
                       {a.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

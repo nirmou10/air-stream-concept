@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AirConditioningServiceInstallationRouteImport } from './routes/air-conditioning-service-installation'
+import { Route as CommercialRouteImport } from './routes/commercial'
 import { Route as DuctlessHvacServicesRouteImport } from './routes/ductless-hvac-services'
+import { Route as GovernmentRouteImport } from './routes/government'
 import { Route as HeatingServiceInstallationRouteImport } from './routes/heating-service-installation'
 import { Route as HvacMaintenanceAgreementsRouteImport } from './routes/hvac-maintenance-agreements'
+import { Route as IndustrialRouteImport } from './routes/industrial'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -26,9 +29,19 @@ const AirConditioningServiceInstallationRoute =
     path: '/air-conditioning-service-installation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const CommercialRoute = CommercialRouteImport.update({
+  id: '/commercial',
+  path: '/commercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DuctlessHvacServicesRoute = DuctlessHvacServicesRouteImport.update({
   id: '/ductless-hvac-services',
   path: '/ductless-hvac-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernmentRoute = GovernmentRouteImport.update({
+  id: '/government',
+  path: '/government',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HeatingServiceInstallationRoute =
@@ -43,59 +56,85 @@ const HvacMaintenanceAgreementsRoute =
     path: '/hvac-maintenance-agreements',
     getParentRoute: () => rootRouteImport,
   } as any)
+const IndustrialRoute = IndustrialRouteImport.update({
+  id: '/industrial',
+  path: '/industrial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/air-conditioning-service-installation': typeof AirConditioningServiceInstallationRoute
+  '/commercial': typeof CommercialRoute
   '/ductless-hvac-services': typeof DuctlessHvacServicesRoute
+  '/government': typeof GovernmentRoute
   '/heating-service-installation': typeof HeatingServiceInstallationRoute
   '/hvac-maintenance-agreements': typeof HvacMaintenanceAgreementsRoute
+  '/industrial': typeof IndustrialRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/air-conditioning-service-installation': typeof AirConditioningServiceInstallationRoute
+  '/commercial': typeof CommercialRoute
   '/ductless-hvac-services': typeof DuctlessHvacServicesRoute
+  '/government': typeof GovernmentRoute
   '/heating-service-installation': typeof HeatingServiceInstallationRoute
   '/hvac-maintenance-agreements': typeof HvacMaintenanceAgreementsRoute
+  '/industrial': typeof IndustrialRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/air-conditioning-service-installation': typeof AirConditioningServiceInstallationRoute
+  '/commercial': typeof CommercialRoute
   '/ductless-hvac-services': typeof DuctlessHvacServicesRoute
+  '/government': typeof GovernmentRoute
   '/heating-service-installation': typeof HeatingServiceInstallationRoute
   '/hvac-maintenance-agreements': typeof HvacMaintenanceAgreementsRoute
+  '/industrial': typeof IndustrialRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/air-conditioning-service-installation'
+    | '/commercial'
     | '/ductless-hvac-services'
+    | '/government'
     | '/heating-service-installation'
     | '/hvac-maintenance-agreements'
+    | '/industrial'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/air-conditioning-service-installation'
+    | '/commercial'
     | '/ductless-hvac-services'
+    | '/government'
     | '/heating-service-installation'
     | '/hvac-maintenance-agreements'
+    | '/industrial'
   id:
     | '__root__'
     | '/'
     | '/air-conditioning-service-installation'
+    | '/commercial'
     | '/ductless-hvac-services'
+    | '/government'
     | '/heating-service-installation'
     | '/hvac-maintenance-agreements'
+    | '/industrial'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AirConditioningServiceInstallationRoute: typeof AirConditioningServiceInstallationRoute
+  CommercialRoute: typeof CommercialRoute
   DuctlessHvacServicesRoute: typeof DuctlessHvacServicesRoute
+  GovernmentRoute: typeof GovernmentRoute
   HeatingServiceInstallationRoute: typeof HeatingServiceInstallationRoute
   HvacMaintenanceAgreementsRoute: typeof HvacMaintenanceAgreementsRoute
+  IndustrialRoute: typeof IndustrialRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -114,11 +153,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AirConditioningServiceInstallationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/commercial': {
+      id: '/commercial'
+      path: '/commercial'
+      fullPath: '/commercial'
+      preLoaderRoute: typeof CommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ductless-hvac-services': {
       id: '/ductless-hvac-services'
       path: '/ductless-hvac-services'
       fullPath: '/ductless-hvac-services'
       preLoaderRoute: typeof DuctlessHvacServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/government': {
+      id: '/government'
+      path: '/government'
+      fullPath: '/government'
+      preLoaderRoute: typeof GovernmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/heating-service-installation': {
@@ -135,6 +188,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HvacMaintenanceAgreementsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industrial': {
+      id: '/industrial'
+      path: '/industrial'
+      fullPath: '/industrial'
+      preLoaderRoute: typeof IndustrialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -142,9 +202,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AirConditioningServiceInstallationRoute:
     AirConditioningServiceInstallationRoute,
+  CommercialRoute: CommercialRoute,
   DuctlessHvacServicesRoute: DuctlessHvacServicesRoute,
+  GovernmentRoute: GovernmentRoute,
   HeatingServiceInstallationRoute: HeatingServiceInstallationRoute,
   HvacMaintenanceAgreementsRoute: HvacMaintenanceAgreementsRoute,
+  IndustrialRoute: IndustrialRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

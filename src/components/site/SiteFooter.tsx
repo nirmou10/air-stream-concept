@@ -52,9 +52,9 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {audiences.map((a) => (
               <li key={a.id}>
-                <a href={a.path} className="text-navy-muted hover:text-navy-foreground">
+                <Link to={a.path} className="text-navy-muted hover:text-navy-foreground">
                   {a.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
