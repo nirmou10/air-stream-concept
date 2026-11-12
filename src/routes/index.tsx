@@ -24,6 +24,7 @@ import {
 } from "@/content/site";
 import { RequestForm, type Prefill } from "@/components/site/RequestForm";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,7 +67,7 @@ export const Route = createFileRoute("/")({
 });
 
 const heroField =
-  "mt-1.5 block w-full rounded-lg border border-navy-border bg-navy px-3.5 py-2.5 text-sm text-navy-foreground";
+  "mt-1.5 block w-full rounded-lg border border-navy-border bg-navy px-3.5 py-3 text-sm text-navy-foreground";
 const heroLabel = "text-xs font-semibold uppercase tracking-wider text-navy-muted";
 
 function HeroInquiry({
@@ -209,7 +210,7 @@ function Index() {
       </section>
 
       {/* About */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">{about.eyebrow}</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">{about.title}</h2>
         <div className="mt-8 grid gap-8 lg:grid-cols-12">
@@ -225,11 +226,17 @@ function Index() {
             </p>
             <p className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4 shrink-0" aria-hidden />
-              <a href={business.phoneLocal.href} className="font-semibold text-foreground">
+              <a
+                href={business.phoneLocal.href}
+                className="inline-flex min-h-11 items-center font-semibold text-foreground"
+              >
                 {business.phoneLocal.display}
               </a>
               <span aria-hidden>·</span>
-              <a href={business.phoneTollFree.href} className="font-semibold text-foreground">
+              <a
+                href={business.phoneTollFree.href}
+                className="inline-flex min-h-11 items-center font-semibold text-foreground"
+              >
                 {business.phoneTollFree.display}
               </a>
             </p>
@@ -238,10 +245,10 @@ function Index() {
             </p>
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Services */}
-      <section className="container-site pb-16 md:pb-24">
+      <Reveal as="section" className="container-site pb-16 md:pb-24">
         <p className="eyebrow">Services</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
           Four services for demanding facilities
@@ -285,10 +292,10 @@ function Index() {
             </article>
           ))}
         </div>
-      </section>
+      </Reveal>
 
       {/* Who we serve */}
-      <section className="bg-secondary py-16 md:py-24">
+      <Reveal as="section" className="bg-secondary py-16 md:py-24">
         <div className="container-site">
           <p className="eyebrow">Who we serve</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
@@ -326,28 +333,42 @@ function Index() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Process */}
-      <section className="container-site py-16 md:py-24">
+      <Reveal as="section" className="container-site py-16 md:py-24">
         <p className="eyebrow">How it works</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">A clear five step process</h2>
+        <p className="mt-3 text-sm text-muted-foreground">
+          A proposed customer journey for this concept demo
+        </p>
         <ol className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
           {processSteps.map((s, i) => (
             <li
               key={s.title}
-              className="flex flex-col rounded-2xl border border-border bg-card p-6"
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card"
             >
-              <span className="font-display text-4xl font-bold text-steel">0{i + 1}</span>
-              <h3 className="mt-3 text-base font-semibold">{s.title}</h3>
-              <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
+              <div className="aspect-[16/10] w-full overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.imageAlt}
+                  loading="lazy"
+                  style={{ objectPosition: s.objectPosition }}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <span className="font-display text-2xl font-bold text-steel">0{i + 1}</span>
+                <h3 className="mt-2 text-base font-semibold">{s.title}</h3>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
+              </div>
             </li>
           ))}
         </ol>
-      </section>
+      </Reveal>
 
       {/* Capabilities summary */}
-      <section className="bg-navy py-16 text-navy-foreground md:py-24">
+      <Reveal as="section" className="bg-navy py-16 text-navy-foreground md:py-24">
         <div className="container-site">
           <p className="eyebrow">Capabilities</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
@@ -364,7 +385,10 @@ function Index() {
               <ul className="mt-3 space-y-2 text-sm text-navy-muted">
                 {services.map((s) => (
                   <li key={s.id}>
-                    <Link to={s.path} className="hover:text-navy-foreground">
+                    <Link
+                      to={s.path}
+                      className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+                    >
                       {s.title}
                     </Link>
                   </li>
@@ -377,7 +401,10 @@ function Index() {
               <ul className="mt-3 space-y-2 text-sm text-navy-muted">
                 {audiences.map((a) => (
                   <li key={a.id}>
-                    <Link to={a.path} className="hover:text-navy-foreground">
+                    <Link
+                      to={a.path}
+                      className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+                    >
                       {a.title}
                     </Link>
                   </li>
@@ -400,21 +427,27 @@ function Index() {
               <h3 className="mt-4 font-semibold">Based in San Antonio</h3>
               <p className="mt-3 text-sm text-navy-muted">{business.address}</p>
               <p className="mt-2 text-sm text-navy-muted">
-                <a href={business.phoneLocal.href} className="hover:text-navy-foreground">
+                <a
+                  href={business.phoneLocal.href}
+                  className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+                >
                   {business.phoneLocal.display}
                 </a>{" "}
                 ·{" "}
-                <a href={business.phoneTollFree.href} className="hover:text-navy-foreground">
+                <a
+                  href={business.phoneTollFree.href}
+                  className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+                >
                   {business.phoneTollFree.display}
                 </a>
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Pricing */}
-      <section className="bg-secondary py-16 md:py-24">
+      <Reveal as="section" className="bg-secondary py-16 md:py-24">
         <div className="container-site">
           <p className="eyebrow">{pricing.eyebrow}</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">{pricing.title}</h2>
@@ -453,16 +486,16 @@ function Index() {
             <p className="text-sm text-muted-foreground">{pricing.note}</p>
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* FAQ */}
-      <section className="container-site py-16 md:py-24">
+      <Reveal as="section" className="container-site py-16 md:py-24">
         <p className="eyebrow">FAQ</p>
         <h2 className="mt-3 text-3xl font-bold md:text-4xl">Common questions</h2>
         <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-card">
           {faqs.map((f) => (
             <details key={f.q} className="group p-5">
-              <summary className="flex min-h-8 cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 font-semibold">
                 {f.q}
                 <span className="text-steel transition-transform group-open:rotate-45" aria-hidden>
                   +
@@ -472,10 +505,10 @@ function Index() {
             </details>
           ))}
         </div>
-      </section>
+      </Reveal>
 
       {/* Consultation */}
-      <section id="consultation" className="scroll-mt-20 bg-secondary py-16 md:py-24">
+      <Reveal as="section" id="consultation" className="scroll-mt-20 bg-secondary py-16 md:py-24">
         <div className="container-site grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">Get started</p>
@@ -488,14 +521,14 @@ function Index() {
               Prefer to talk? Call{" "}
               <a
                 href={business.phoneLocal.href}
-                className="font-semibold text-foreground underline"
+                className="inline-flex min-h-11 items-center font-semibold text-foreground underline"
               >
                 {business.phoneLocal.display}
               </a>{" "}
               or{" "}
               <a
                 href={business.phoneTollFree.href}
-                className="font-semibold text-foreground underline"
+                className="inline-flex min-h-11 items-center font-semibold text-foreground underline"
               >
                 {business.phoneTollFree.display}
               </a>
@@ -506,7 +539,7 @@ function Index() {
             <RequestForm prefill={prefill} />
           </div>
         </div>
-      </section>
+      </Reveal>
     </main>
   );
 }

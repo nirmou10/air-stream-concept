@@ -131,6 +131,27 @@
   color: var(--steel);
 }
 
+/* Scroll reveal: hidden state is added by JS only after mount, so content is
+   visible without JavaScript and never animates under reduced motion. */
+.reveal {
+  transition:
+    opacity 550ms ease-out,
+    translate 550ms ease-out;
+}
+.reveal-pending {
+  opacity: 0;
+  translate: 0 14px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+  .reveal-pending {
+    opacity: 1;
+    translate: none;
+  }
+}
+
 @utility ph {
   display: inline-block;
   border-radius: 0.375rem;

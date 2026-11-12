@@ -22,11 +22,17 @@ export function SiteFooter() {
           </p>
           <p className="mt-2 flex items-center gap-2 text-sm text-navy-muted">
             <Phone className="h-4 w-4 shrink-0" aria-hidden />
-            <a href={business.phoneLocal.href} className="hover:text-navy-foreground">
+            <a
+              href={business.phoneLocal.href}
+              className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+            >
               {business.phoneLocal.display}
             </a>
             <span aria-hidden>·</span>
-            <a href={business.phoneTollFree.href} className="hover:text-navy-foreground">
+            <a
+              href={business.phoneTollFree.href}
+              className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+            >
               {business.phoneTollFree.display}
             </a>
           </p>
@@ -34,10 +40,13 @@ export function SiteFooter() {
 
         <nav aria-label="Services" className="md:col-span-3">
           <p className="text-xs font-semibold uppercase tracking-wider text-navy-muted">Services</p>
-          <ul className="mt-4 space-y-2.5 text-sm">
+          <ul className="mt-4 space-y-1 text-sm">
             {services.map((s) => (
               <li key={s.id}>
-                <Link to={s.path} className="text-navy-muted hover:text-navy-foreground">
+                <Link
+                  to={s.path}
+                  className="inline-flex min-h-11 items-center text-navy-muted hover:text-navy-foreground"
+                >
                   {s.title}
                 </Link>
               </li>
@@ -49,10 +58,13 @@ export function SiteFooter() {
           <p className="text-xs font-semibold uppercase tracking-wider text-navy-muted">
             Who we serve
           </p>
-          <ul className="mt-4 space-y-2.5 text-sm">
+          <ul className="mt-4 space-y-1 text-sm">
             {audiences.map((a) => (
               <li key={a.id}>
-                <Link to={a.path} className="text-navy-muted hover:text-navy-foreground">
+                <Link
+                  to={a.path}
+                  className="inline-flex min-h-11 items-center text-navy-muted hover:text-navy-foreground"
+                >
                   {a.title}
                 </Link>
               </li>

@@ -17,12 +17,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
-function CtaLink({ className = "", onClick }: { className?: string; onClick?: () => void }) {
+function CtaLink({
+  className = "",
+  onClick,
+  wrap = false,
+}: {
+  className?: string;
+  onClick?: () => void;
+  wrap?: boolean;
+}) {
   return (
     <a
       href="/#consultation"
       onClick={onClick}
-      className={`inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground transition hover:brightness-105 ${className}`}
+      className={`inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground transition hover:brightness-105 ${wrap ? "w-full whitespace-normal text-center" : "whitespace-nowrap"} ${className}`}
     >
       {cta.primary}
     </a>
@@ -177,7 +185,7 @@ export function SiteHeader() {
                 {business.phoneLocal.display}
               </a>
               <p className="text-sm text-navy-muted">{business.phoneTollFree.display} toll free</p>
-              <CtaLink className="w-full" onClick={() => setOpen(false)} />
+              <CtaLink wrap onClick={() => setOpen(false)} />
             </div>
           </SheetContent>
         </Sheet>

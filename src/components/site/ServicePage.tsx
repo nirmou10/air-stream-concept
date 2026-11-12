@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, TriangleAlert } from "lucide-react";
 import { servicePages, services, type ServiceId } from "@/content/site";
+import { Reveal } from "@/components/site/Reveal";
 
 const OG_IMAGE = "https://pixel-perfect-one-sable.vercel.app/og-image.png";
 
@@ -32,7 +33,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-navy-muted">
               <li>
-                <Link to="/" className="hover:text-navy-foreground">
+                <Link
+                  to="/"
+                  className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+                >
                   Home
                 </Link>
               </li>
@@ -65,7 +69,7 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
       </section>
 
       {/* Common facility problems */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">Common facility problems</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
           Signs your facility may need this service
@@ -81,10 +85,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             </li>
           ))}
         </ul>
-      </section>
+      </Reveal>
 
       {/* What Air-Stream advertises */}
-      <section className="bg-secondary py-16 md:py-20">
+      <Reveal as="section" className="bg-secondary py-16 md:py-20">
         <div className="container-site">
           <p className="eyebrow">What Air-Stream advertises</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
@@ -99,10 +103,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
       {/* Typical scope of work */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">Typical scope of work</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
           What an engagement can include
@@ -115,10 +119,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             </li>
           ))}
         </ol>
-      </section>
+      </Reveal>
 
       {/* Why it matters */}
-      <section className="bg-navy py-16 text-navy-foreground md:py-20">
+      <Reveal as="section" className="bg-navy py-16 text-navy-foreground md:py-20">
         <div className="container-site">
           <p className="eyebrow">Why it matters</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
@@ -135,10 +139,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
       {/* Pricing */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-card p-6 text-center md:p-8">
           <p className="eyebrow">Pricing</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">
@@ -149,10 +153,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
           </span>
           <p className="mt-4 text-muted-foreground">{page.pricingNote}</p>
         </div>
-      </section>
+      </Reveal>
 
       {/* CTA */}
-      <section className="bg-secondary py-14 md:py-16">
+      <Reveal as="section" className="bg-secondary py-14 md:py-16">
         <div className="container-site flex flex-col items-center gap-4 text-center">
           <h2 className="text-2xl font-bold md:text-3xl">Ready to discuss your facility?</h2>
           <p className="max-w-xl text-muted-foreground">
@@ -168,10 +172,10 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             {service.quoteLabel} <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
-      </section>
+      </Reveal>
 
       {/* Related services */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">Related services</p>
         <h2 className="mt-3 text-3xl font-bold md:text-4xl">Other services Air-Stream provides</h2>
         <div className="mt-8 grid gap-5 sm:grid-cols-3">
@@ -198,7 +202,7 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             </Link>
           ))}
         </div>
-      </section>
+      </Reveal>
     </main>
   );
 }

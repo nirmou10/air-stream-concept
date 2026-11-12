@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, ClipboardList, Thermometer } from "lucide-react";
 import { audiencePages, audiences, cta, services, type AudienceId } from "@/content/site";
+import { Reveal } from "@/components/site/Reveal";
 
 const OG_IMAGE = "https://pixel-perfect-one-sable.vercel.app/og-image.png";
 
@@ -32,7 +33,10 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-navy-muted">
               <li>
-                <Link to="/" className="hover:text-navy-foreground">
+                <Link
+                  to="/"
+                  className="inline-flex min-h-11 items-center hover:text-navy-foreground"
+                >
                   Home
                 </Link>
               </li>
@@ -68,7 +72,7 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
       </section>
 
       {/* Typical needs */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">Typical needs</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
           What this audience typically needs
@@ -84,10 +88,10 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             </li>
           ))}
         </ul>
-      </section>
+      </Reveal>
 
       {/* Services that fit */}
-      <section className="bg-secondary py-16 md:py-20">
+      <Reveal as="section" className="bg-secondary py-16 md:py-20">
         <div className="container-site">
           <p className="eyebrow">Services that fit</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
@@ -115,7 +119,7 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
                     <p className="mt-2 flex-1 text-sm text-muted-foreground">{fit.sentence}</p>
                     <Link
                       to={service.path}
-                      className="mt-4 inline-flex items-center gap-1 self-start text-sm font-bold text-foreground underline decoration-steel decoration-2 underline-offset-4"
+                      className="mt-4 inline-flex min-h-11 items-center gap-1 self-start text-sm font-bold text-foreground underline decoration-steel decoration-2 underline-offset-4"
                     >
                       Learn More <ArrowRight className="h-4 w-4" aria-hidden />
                     </Link>
@@ -125,10 +129,10 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             })}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Planning considerations */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">Planning considerations</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
           Factors worth discussing for this audience
@@ -146,10 +150,10 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             </li>
           ))}
         </ol>
-      </section>
+      </Reveal>
 
       {/* Advertised facts */}
-      <section className="bg-navy py-16 text-navy-foreground md:py-20">
+      <Reveal as="section" className="bg-navy py-16 text-navy-foreground md:py-20">
         <div className="container-site">
           <p className="eyebrow">What Air-Stream advertises</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">Company-published facts</h2>
@@ -167,10 +171,10 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
       {/* CTA */}
-      <section className="bg-secondary py-14 md:py-16">
+      <Reveal as="section" className="bg-secondary py-14 md:py-16">
         <div className="container-site flex flex-col items-center gap-4 text-center">
           <h2 className="text-2xl font-bold md:text-3xl">{cta.primary}</h2>
           <p className="max-w-xl text-muted-foreground">
@@ -186,10 +190,10 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             {cta.primary} <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
-      </section>
+      </Reveal>
 
       {/* Other audiences */}
-      <section className="container-site py-16 md:py-20">
+      <Reveal as="section" className="container-site py-16 md:py-20">
         <p className="eyebrow">Other audiences</p>
         <h2 className="mt-3 text-3xl font-bold md:text-4xl">Other audiences Air-Stream serves</h2>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -218,7 +222,7 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             </Link>
           ))}
         </div>
-      </section>
+      </Reveal>
     </main>
   );
 }

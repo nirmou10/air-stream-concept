@@ -397,26 +397,47 @@ export const audiencePages: Record<
   },
 };
 
-export const processSteps = [
+export const processSteps: {
+  title: string;
+  body: string;
+  image: string;
+  imageAlt: string;
+  objectPosition: string;
+}[] = [
   {
-    title: "Tell us about your facility",
-    body: "Share your building type, equipment details, and goals through the inquiry form or by phone. The more context you provide, the better we can prepare for the first conversation.",
+    title: "Initial Consultation",
+    body: "You share details about your facility, the equipment involved, and what you want to accomplish, either through the inquiry form or by phone. This gives the team context for the first conversation about your building.",
+    image: "/images/commercial.jpg",
+    imageAlt: "Licensed stock photo of a modern commercial office building",
+    objectPosition: "center 30%",
   },
   {
-    title: "We review your needs",
-    body: "The Air-Stream team follows up to understand the scope of work, your timeline, and any site conditions that matter for planning.",
+    title: "Facility Assessment",
+    body: "A technician reviews the existing systems and the site conditions that affect the work. The findings become the basis for the options the team recommends for your facility.",
+    image: "/images/maintenance.jpg",
+    imageAlt: "Licensed stock photo of a technician servicing an HVAC unit",
+    objectPosition: "center 60%",
   },
   {
-    title: "Site assessment",
-    body: "A technician evaluates your existing systems and building requirements, then recommends the options that fit your facility.",
+    title: "Recommended Solution and Proposal",
+    body: "Air-Stream outlines the recommended approach along with a written scope of work for your review. You can ask questions and adjust the plan before deciding how to proceed.",
+    image: "/images/hero.jpg",
+    imageAlt: "Licensed stock photo of commercial HVAC rooftop equipment",
+    objectPosition: "center 40%",
   },
   {
-    title: "Scope and planning",
-    body: "You receive a clear scope of work and schedule before any commitment is made, so there are no surprises down the line.",
+    title: "Service or Project Execution",
+    body: "Technicians carry out the agreed work, whether that is a repair, an installation, or a larger project. Work is scheduled around your facility's operations.",
+    image: "/images/ac-service.jpg",
+    imageAlt: "Licensed stock photo of air conditioning equipment and refrigerant lines",
+    objectPosition: "center 70%",
   },
   {
-    title: "Service or installation",
-    body: "NATE-certified technicians complete the work with careful attention to your operations, keeping disruption to your facility to a minimum.",
+    title: "Ongoing Maintenance and Support",
+    body: "After the work is complete, recurring maintenance can keep systems in good working order. Many facilities pair service or installation with a maintenance agreement for planned follow-up visits.",
+    image: "/images/heating.jpg",
+    imageAlt: "Licensed stock photo of a heating system and ductwork",
+    objectPosition: "center 35%",
   },
 ];
 
