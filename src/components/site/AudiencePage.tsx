@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, ClipboardList, Thermometer } from "lucide-react";
-import { audiencePages, audiences, cta, services, type AudienceId } from "@/content/site";
+import { audiencePages, audiences, cta, services, SITE_URL, type AudienceId } from "@/content/site";
 import { Reveal } from "@/components/site/Reveal";
 
-const OG_IMAGE = "https://pixel-perfect-one-sable.vercel.app/og-image.png";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export function audiencePageMeta(audienceId: AudienceId) {
   const page = audiencePages[audienceId];

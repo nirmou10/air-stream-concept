@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
+import { SITE_URL } from "@/content/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -95,9 +96,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Commercial, government, and industrial HVAC service and installation in San Antonio, Texas. Unofficial concept redesign.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://pixel-perfect-one-sable.vercel.app/og-image.png" },
+      { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://pixel-perfect-one-sable.vercel.app/og-image.png" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
     ],
     links: [
       {

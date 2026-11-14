@@ -11,6 +11,8 @@ export type ServicePath =
   | "/ductless-hvac-services";
 export type AudiencePath = "/commercial" | "/government" | "/industrial";
 
+export const SITE_URL = "https://nirmou10-air-stream-concept.vercel.app";
+
 export const business = {
   brand: "Air-Stream",
   fullName: "Air-Stream Air Conditioning and Heating Co. Inc.",
@@ -46,7 +48,8 @@ export const services: {
     body: "Service, repair, and installation of air conditioning systems for commercial buildings, performed by NATE-certified technicians.",
     path: "/air-conditioning-service-installation",
     image: "/images/ac-service.jpg",
-    imageAlt: "Licensed stock photo of air conditioning equipment and refrigerant lines",
+    imageAlt:
+      "Licensed stock photo of a technician checking refrigerant gauges on an air conditioning unit",
     pricingBadge: "Project-based pricing",
     quoteLabel: "Request a Quote",
   },
@@ -56,17 +59,17 @@ export const services: {
     body: "Heating system service and installation for offices, facilities, and industrial properties across San Antonio.",
     path: "/heating-service-installation",
     image: "/images/heating.jpg",
-    imageAlt: "Licensed stock photo of a residential-style heating system and ductwork",
+    imageAlt: "Licensed stock photo of a mechanical room with pumps and piping",
     pricingBadge: "Custom system quote",
     quoteLabel: "Request a Quote",
   },
   {
     id: "maintenance",
     title: "HVAC Maintenance Agreements",
-    body: "Planned maintenance agreements that help keep commercial HVAC systems efficient, compliant, and ready for peak demand.",
+    body: "Planned maintenance agreements that help keep commercial HVAC systems efficient and ready for peak demand.",
     path: "/hvac-maintenance-agreements",
     image: "/images/maintenance.jpg",
-    imageAlt: "Licensed stock photo of a technician servicing an HVAC unit",
+    imageAlt: "Licensed stock photo of a technician adjusting a heating system control panel",
     pricingBadge: "Annual contract",
     quoteLabel: "Request a Maintenance Proposal",
   },
@@ -76,7 +79,7 @@ export const services: {
     body: "Ductless HVAC installation and service for spaces where traditional ductwork is not practical or efficient.",
     path: "/ductless-hvac-services",
     image: "/images/ductless.jpg",
-    imageAlt: "Licensed stock photo of a ductless mini-split indoor unit",
+    imageAlt: "Licensed stock photo of an office with a ductless indoor unit",
     pricingBadge: "Per-zone or project quote",
     quoteLabel: "Request a Quote",
   },
@@ -248,7 +251,7 @@ export const audiences: {
     body: "Offices, retail, medical, and mixed use properties that need dependable climate control during business hours.",
     path: "/commercial",
     image: "/images/commercial.jpg",
-    imageAlt: "Licensed stock photo of a modern commercial office building exterior",
+    imageAlt: "Licensed stock photo of commercial rooftop air conditioning units",
   },
   {
     id: "government",
@@ -408,14 +411,14 @@ export const processSteps: {
     title: "Initial Consultation",
     body: "You share details about your facility, the equipment involved, and what you want to accomplish, either through the inquiry form or by phone. This gives the team context for the first conversation about your building.",
     image: "/images/commercial.jpg",
-    imageAlt: "Licensed stock photo of a modern commercial office building",
+    imageAlt: "Licensed stock photo of commercial rooftop air conditioning units",
     objectPosition: "center 30%",
   },
   {
     title: "Facility Assessment",
     body: "A technician reviews the existing systems and the site conditions that affect the work. The findings become the basis for the options the team recommends for your facility.",
     image: "/images/maintenance.jpg",
-    imageAlt: "Licensed stock photo of a technician servicing an HVAC unit",
+    imageAlt: "Licensed stock photo of a technician adjusting a heating system control panel",
     objectPosition: "center 60%",
   },
   {
@@ -429,14 +432,15 @@ export const processSteps: {
     title: "Service or Project Execution",
     body: "Technicians carry out the agreed work, whether that is a repair, an installation, or a larger project. Work is scheduled around your facility's operations.",
     image: "/images/ac-service.jpg",
-    imageAlt: "Licensed stock photo of air conditioning equipment and refrigerant lines",
+    imageAlt:
+      "Licensed stock photo of a technician checking refrigerant gauges on an air conditioning unit",
     objectPosition: "center 70%",
   },
   {
     title: "Ongoing Maintenance and Support",
     body: "After the work is complete, recurring maintenance can keep systems in good working order. Many facilities pair service or installation with a maintenance agreement for planned follow-up visits.",
     image: "/images/heating.jpg",
-    imageAlt: "Licensed stock photo of a heating system and ductwork",
+    imageAlt: "Licensed stock photo of a mechanical room with pumps and piping",
     objectPosition: "center 35%",
   },
 ];
@@ -493,10 +497,6 @@ export const faqs = [
   {
     q: "How is commercial HVAC work priced?",
     a: "Pricing follows an assessment of your facility and systems first. The written estimate depends on the scope of work. Request a consultation to start the process.",
-  },
-  {
-    q: "Can I get pricing online?",
-    a: "No. Pricing depends on an assessment of your facility and systems. Request a consultation to discuss your project.",
   },
   {
     q: "What should I do if I smell gas or suspect a leak?",

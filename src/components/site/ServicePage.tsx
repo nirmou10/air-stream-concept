@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, TriangleAlert } from "lucide-react";
-import { servicePages, services, type ServiceId } from "@/content/site";
+import { servicePages, services, SITE_URL, type ServiceId } from "@/content/site";
 import { Reveal } from "@/components/site/Reveal";
 
-const OG_IMAGE = "https://pixel-perfect-one-sable.vercel.app/og-image.png";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export function servicePageMeta(serviceId: ServiceId) {
   const page = servicePages[serviceId];
