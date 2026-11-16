@@ -339,22 +339,11 @@ function Index() {
           {processSteps.map((s, i) => (
             <li
               key={s.title}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card"
+              className="flex flex-col rounded-2xl border border-border bg-card p-6"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.imageAlt}
-                  loading="lazy"
-                  style={{ objectPosition: s.objectPosition }}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <span className="font-display text-2xl font-bold text-steel">0{i + 1}</span>
-                <h3 className="mt-2 text-base font-semibold">{s.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
-              </div>
+              <span className="font-display text-3xl font-bold text-steel">0{i + 1}</span>
+              <h3 className="mt-3 text-base font-semibold">{s.title}</h3>
+              <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
             </li>
           ))}
         </ol>

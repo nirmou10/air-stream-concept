@@ -406,45 +406,26 @@ export const audiencePages: Record<
 export const processSteps: {
   title: string;
   body: string;
-  image: string;
-  imageAlt: string;
-  objectPosition: string;
 }[] = [
   {
     title: "Initial Consultation",
     body: "You share details about your facility, the equipment involved, and what you want to accomplish, either through the inquiry form or by phone. This gives the team context for the first conversation about your building.",
-    image: "/images/commercial.jpg",
-    imageAlt: "Licensed stock photo of commercial rooftop air conditioning units",
-    objectPosition: "center 30%",
   },
   {
     title: "Facility Assessment",
     body: "A technician reviews the existing systems and the site conditions that affect the work. The findings become the basis for the options the team recommends for your facility.",
-    image: "/images/maintenance.jpg",
-    imageAlt: "Licensed stock photo of a technician adjusting a heating system control panel",
-    objectPosition: "center 60%",
   },
   {
     title: "Recommended Solution and Proposal",
     body: "Air-Stream outlines the recommended approach along with a written scope of work for your review. You can ask questions and adjust the plan before deciding how to proceed.",
-    image: "/images/hero.jpg",
-    imageAlt: "Licensed stock photo of commercial HVAC rooftop equipment",
-    objectPosition: "center 40%",
   },
   {
     title: "Service or Project Execution",
     body: "Technicians carry out the agreed work, whether that is a repair, an installation, or a larger project. Work is scheduled around your facility's operations.",
-    image: "/images/ac-service.jpg",
-    imageAlt:
-      "Licensed stock photo of a technician checking refrigerant gauges on an air conditioning unit",
-    objectPosition: "center 70%",
   },
   {
     title: "Ongoing Maintenance and Support",
     body: "After the work is complete, recurring maintenance can keep systems in good working order. Many facilities pair service or installation with a maintenance agreement for planned follow-up visits.",
-    image: "/images/heating.jpg",
-    imageAlt: "Licensed stock photo of a mechanical room with pumps and piping",
-    objectPosition: "center 35%",
   },
 ];
 
