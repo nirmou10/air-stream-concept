@@ -82,18 +82,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Air-Stream HVAC Concept Redesign | Commercial, Government, Industrial" },
+      { title: "Air-Stream HVAC Concept Redesign | Commercial & Government" },
       {
         name: "description",
         content:
-          "Unofficial concept redesign for Air-Stream Air Conditioning and Heating Co. Inc. of San Antonio, TX. Commercial, government, and industrial HVAC services.",
+          "Unofficial concept redesign for Air-Stream Air Conditioning and Heating Co. Inc. of San Antonio, TX. Commercial and government HVAC services; industrial inquiries reviewed case by case.",
       },
       { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: "Air-Stream HVAC Concept Redesign" },
       {
         property: "og:description",
         content:
-          "Commercial, government, and industrial HVAC service and installation in San Antonio, Texas. Unofficial concept redesign.",
+          "Commercial and government HVAC service and installation in San Antonio, Texas. Industrial inquiries are reviewed case by case. Unofficial concept redesign.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `${SITE_URL}/og-image.png` },

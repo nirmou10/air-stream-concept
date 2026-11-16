@@ -1,21 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Building2,
-  ClipboardList,
-  MapPin,
-  Phone,
-  Wrench,
-} from "lucide-react";
+import { ArrowRight, BadgeCheck, MapPin, Phone } from "lucide-react";
 import {
   about,
   audiences,
   business,
   cta,
   faqs,
-  pricing,
   processSteps,
   services,
   SITE_URL,
@@ -30,17 +21,17 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Air-Stream HVAC Concept | Commercial, Government & Industrial San Antonio" },
+      { title: "Air-Stream HVAC Concept | Commercial & Government San Antonio" },
       {
         name: "description",
         content:
-          "Unofficial concept redesign for Air-Stream Air Conditioning and Heating Co. Inc. HVAC service, installation, and maintenance agreements for commercial, government, and industrial facilities in San Antonio, TX.",
+          "Unofficial concept redesign for Air-Stream Air Conditioning and Heating Co. Inc. HVAC service, installation, and maintenance agreements for commercial and government facilities in San Antonio, TX. Industrial inquiries are reviewed case by case.",
       },
       { property: "og:title", content: "Air-Stream HVAC Concept Redesign" },
       {
         property: "og:description",
         content:
-          "Commercial, government, and industrial HVAC services in San Antonio, Texas. Unofficial concept redesign.",
+          "Commercial and government HVAC services in San Antonio, Texas. Industrial inquiries are reviewed case by case. Unofficial concept redesign.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
@@ -171,7 +162,7 @@ function Index() {
         <div className="relative">
           <div className="container-site grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
-              <p className="eyebrow">Commercial · Government · Industrial HVAC</p>
+              <p className="eyebrow">Commercial · Government · Industrial inquiries</p>
               <h1 className="mt-4 text-4xl font-bold leading-[1.05] md:text-5xl">
                 HVAC service and installation for San Antonio facilities.
               </h1>
@@ -301,7 +292,7 @@ function Index() {
         <div className="container-site">
           <p className="eyebrow">Who we serve</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
-            Built for commercial, government, and industrial work
+            Commercial, government, and industrial inquiries
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {audiences.map((a) => (
@@ -367,127 +358,6 @@ function Index() {
             </li>
           ))}
         </ol>
-      </Reveal>
-
-      {/* Capabilities summary */}
-      <Reveal as="section" className="bg-navy py-16 text-navy-foreground md:py-24">
-        <div className="container-site">
-          <p className="eyebrow">Capabilities</p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
-            What Air-Stream can take on
-          </h2>
-          <p className="mt-4 max-w-2xl text-navy-muted">
-            A summary of the services, facility types, and engagement model published by the
-            company.
-          </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-navy-border bg-navy/60 p-6">
-              <Wrench className="h-6 w-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-semibold">HVAC services</h3>
-              <ul className="mt-3 space-y-2 text-sm text-navy-muted">
-                {services.map((s) => (
-                  <li key={s.id}>
-                    <Link
-                      to={s.path}
-                      className="inline-flex min-h-11 items-center hover:text-navy-foreground"
-                    >
-                      {s.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl border border-navy-border bg-navy/60 p-6">
-              <Building2 className="h-6 w-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-semibold">Facility types</h3>
-              <ul className="mt-3 space-y-2 text-sm text-navy-muted">
-                {audiences.map((a) => (
-                  <li key={a.id}>
-                    <Link
-                      to={a.path}
-                      className="inline-flex min-h-11 items-center hover:text-navy-foreground"
-                    >
-                      {a.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl border border-navy-border bg-navy/60 p-6">
-              <ClipboardList className="h-6 w-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-semibold">Engagement process</h3>
-              <ol className="mt-3 space-y-2 text-sm text-navy-muted">
-                {processSteps.map((s, i) => (
-                  <li key={s.title}>
-                    <span className="font-semibold text-navy-foreground">{i + 1}.</span> {s.title}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="rounded-2xl border border-navy-border bg-navy/60 p-6">
-              <MapPin className="h-6 w-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-semibold">Based in San Antonio</h3>
-              <p className="mt-3 text-sm text-navy-muted">{business.address}</p>
-              <p className="mt-2 text-sm text-navy-muted">
-                <a
-                  href={business.phoneLocal.href}
-                  className="inline-flex min-h-11 items-center hover:text-navy-foreground"
-                >
-                  {business.phoneLocal.display}
-                </a>{" "}
-                ·{" "}
-                <a
-                  href={business.phoneTollFree.href}
-                  className="inline-flex min-h-11 items-center hover:text-navy-foreground"
-                >
-                  {business.phoneTollFree.display}
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
-      {/* Pricing */}
-      <Reveal as="section" className="bg-secondary py-16 md:py-24">
-        <div className="container-site">
-          <p className="eyebrow">{pricing.eyebrow}</p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">{pricing.title}</h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground">{pricing.intro}</p>
-
-          <h3 className="mt-10 text-lg font-semibold">{pricing.factorsHeading}</h3>
-          <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {pricing.factors.map((f, i) => (
-              <li key={f} className="flex flex-col rounded-2xl border border-border bg-card p-5">
-                <span className="font-display text-2xl font-bold text-steel">0{i + 1}</span>
-                <span className="mt-2 text-sm font-semibold">{f}</span>
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="mt-10 text-lg font-semibold">{pricing.prepareHeading}</h3>
-          <ol className="mt-5 grid gap-4 sm:grid-cols-3">
-            {pricing.prepare.map((p, i) => (
-              <li
-                key={p}
-                className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5"
-              >
-                <span className="font-display text-2xl font-bold text-steel">0{i + 1}</span>
-                <span className="text-sm font-semibold">{p}</span>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-10 flex flex-col items-start gap-4">
-            <a
-              href="#consultation"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold text-primary-foreground transition hover:brightness-105"
-            >
-              {pricing.ctaLabel} <ArrowRight className="h-4 w-4" aria-hidden />
-            </a>
-            <p className="text-sm text-muted-foreground">{pricing.note}</p>
-          </div>
-        </div>
       </Reveal>
 
       {/* FAQ */}

@@ -56,7 +56,7 @@ export const services: {
   {
     id: "heating",
     title: "Heating System Service & Installation",
-    body: "Heating system service and installation for offices, facilities, and industrial properties across San Antonio.",
+    body: "Heating system service and installation for offices and commercial facilities across San Antonio.",
     path: "/heating-service-installation",
     image: "/images/heating.jpg",
     imageAlt: "Licensed stock photo of a mechanical room with pumps and piping",
@@ -106,9 +106,9 @@ export const servicePages: Record<
   ac: {
     metaTitle: "Air Conditioning Service & Installation in San Antonio | Air-Stream",
     metaDescription:
-      "Air-Stream provides air conditioning service, repair, and installation for commercial, government, and industrial facilities in San Antonio, Texas.",
+      "Air-Stream provides air conditioning service, repair, and installation for commercial and government facilities in San Antonio, Texas.",
     intro:
-      "Air-Stream provides air conditioning service, repair, and installation for commercial, government, and industrial facilities across San Antonio.",
+      "Air-Stream provides air conditioning service, repair, and installation for commercial and government facilities across San Antonio. Industrial inquiries are reviewed case by case; contact Air-Stream to confirm availability for your facility.",
     problems: [
       "Uneven cooling or hot spots across occupied areas",
       "Rising energy use without a matching change in comfort",
@@ -139,9 +139,9 @@ export const servicePages: Record<
   heating: {
     metaTitle: "Heating System Service & Installation in San Antonio | Air-Stream",
     metaDescription:
-      "Air-Stream provides heating system service and installation for offices, facilities, and industrial properties in San Antonio, Texas.",
+      "Air-Stream provides heating system service and installation for offices and commercial facilities in San Antonio, Texas.",
     intro:
-      "Air-Stream provides heating system service and installation for offices, facilities, and industrial properties across San Antonio.",
+      "Air-Stream provides heating system service and installation for offices and commercial facilities across San Antonio. Industrial inquiries are reviewed case by case; contact Air-Stream to confirm availability for your facility.",
     problems: [
       "Cold zones or uneven heat during colder months",
       "Equipment that struggles to reach setpoint on cold days",
@@ -172,9 +172,9 @@ export const servicePages: Record<
   maintenance: {
     metaTitle: "HVAC Maintenance Agreements in San Antonio | Air-Stream",
     metaDescription:
-      "Air-Stream offers HVAC maintenance agreements for commercial, government, and industrial facilities in San Antonio, Texas.",
+      "Air-Stream offers HVAC maintenance agreements for commercial and government facilities in San Antonio, Texas.",
     intro:
-      "Air-Stream offers HVAC maintenance agreements for commercial, government, and industrial facilities that want planned, recurring attention for their systems.",
+      "Air-Stream offers HVAC maintenance agreements for commercial and government facilities that want planned, recurring attention for their systems. Industrial inquiries are reviewed case by case; contact Air-Stream to confirm availability for your facility.",
     problems: [
       "Skipped seasonal tune-ups and filter changes",
       "Small issues that grow into larger repairs",
@@ -264,7 +264,7 @@ export const audiences: {
   {
     id: "industrial",
     title: "Industrial",
-    body: "Warehouses, plants, and industrial facilities with demanding heating and cooling requirements.",
+    body: "Industrial inquiries are reviewed case by case. Contact Air-Stream to confirm availability for your facility.",
     path: "/industrial",
     image: "/images/industrial.jpg",
     imageAlt: "Licensed stock photo of an industrial warehouse facility",
@@ -328,7 +328,7 @@ export const audiencePages: Record<
     metaDescription:
       "Air-Stream provides HVAC services for government and public facilities in San Antonio, Texas.",
     intro:
-      "Air-Stream serves government and public facilities in San Antonio, part of the commercial, government, and industrial work the company advertises.",
+      "Air-Stream serves government and public facilities in San Antonio. Commercial and government are the published service segments; industrial inquiries are reviewed case by case.",
     needs: [
       "Dependable climate control for public buildings and offices",
       "Service that fits facility schedules, access rules, and occupancy patterns",
@@ -362,11 +362,11 @@ export const audiencePages: Record<
     ],
   },
   industrial: {
-    metaTitle: "Industrial HVAC Services in San Antonio | Air-Stream",
+    metaTitle: "Industrial HVAC Inquiries in San Antonio | Air-Stream",
     metaDescription:
-      "Air-Stream provides HVAC service, installation, and maintenance for industrial facilities in San Antonio, Texas.",
+      "Industrial HVAC inquiries are reviewed case by case. Air-Stream provides HVAC service, installation, and maintenance for commercial and government facilities in San Antonio, Texas.",
     intro:
-      "Air-Stream serves industrial facilities in San Antonio, including warehouses, plants, and properties with demanding heating and cooling requirements.",
+      "Air-Stream reviews industrial inquiries case by case. If your facility is a warehouse, plant, or other industrial property, contact the company to confirm availability for your facility in San Antonio.",
     needs: [
       "Systems sized for large or demanding spaces",
       "Reliable operation that supports production uptime",
@@ -376,19 +376,22 @@ export const audiencePages: Record<
     serviceFit: [
       {
         serviceId: "ac",
-        sentence: "Air conditioning service and installation for industrial spaces and facilities.",
+        sentence:
+          "Air conditioning service and installation for industrial spaces and facilities, subject to case-by-case review.",
       },
       {
         serviceId: "heating",
-        sentence: "Heating system service for plants, warehouses, and industrial properties.",
+        sentence:
+          "Heating system service for plants, warehouses, and industrial properties, subject to case-by-case review.",
       },
       {
         serviceId: "maintenance",
-        sentence: "Maintenance agreements that support uptime and planned upkeep.",
+        sentence: "Maintenance agreements for planned upkeep, subject to case-by-case review.",
       },
       {
         serviceId: "ductless",
-        sentence: "Ductless options for zones or areas that need targeted conditioning.",
+        sentence:
+          "Ductless options for zones or areas that need targeted conditioning, subject to case-by-case review.",
       },
     ],
     considerations: [
@@ -450,31 +453,8 @@ export const about = {
   title: "About Air-Stream Air Conditioning and Heating Co. Inc.",
   paragraphs: [
     "Air-Stream Air Conditioning and Heating Co. Inc. is a San Antonio, Texas company that has served the area since 1974. The company is located at 4343 Dividend, San Antonio, TX 78219.",
-    "Air-Stream provides air conditioning, heating, maintenance agreement, and ductless HVAC services for commercial, government, and industrial facilities. Its technicians are NATE-certified, and the company advertises 24/7/365 service availability.",
+    "Air-Stream provides air conditioning, heating, maintenance agreement, and ductless HVAC services for commercial and government facilities. Industrial inquiries are reviewed case by case; contact Air-Stream to confirm availability for your facility. Its technicians are NATE-certified, and the company advertises 24/7/365 service availability.",
   ],
-};
-
-export const pricing = {
-  eyebrow: "Pricing",
-  title: "Clear estimates for commercial HVAC work",
-  intro:
-    "Pricing depends on the facility and the scope of work, so estimates follow an assessment instead of a fixed price list.",
-  factorsHeading: "What shapes your estimate",
-  factors: [
-    "Facility size and use",
-    "Equipment type and capacity",
-    "Scope of work",
-    "Access and installation conditions",
-    "Service coverage and response needs",
-  ],
-  prepareHeading: "What to prepare",
-  prepare: [
-    "Facility type and location",
-    "The system issue or project scope",
-    "Your preferred contact details",
-  ],
-  ctaLabel: "Request a Commercial HVAC Consultation",
-  note: "Estimates depend on an assessment of your facility. This concept demo does not publish prices.",
 };
 
 export const faqs = [
@@ -492,7 +472,7 @@ export const faqs = [
   },
   {
     q: "Do you work with government and industrial facilities?",
-    a: "Air-Stream publishes services for commercial and government facilities. For industrial needs, please contact the company directly.",
+    a: "Air-Stream publishes services for commercial and government facilities. Industrial inquiries are reviewed case by case; please contact Air-Stream to confirm availability for your facility.",
   },
   {
     q: "How is commercial HVAC work priced?",
