@@ -59,7 +59,8 @@ export const services: {
     body: "Heating system service and installation for offices and commercial facilities across San Antonio.",
     path: "/heating-service-installation",
     image: "/images/heating.jpg",
-    imageAlt: "Licensed stock photo of a mechanical room with pumps and piping",
+    imageAlt:
+      "Licensed stock photo of an industrial heating manifold with pressure gauges and steel pipes",
     pricingBadge: "Custom system quote",
     quoteLabel: "Request a Quote",
   },

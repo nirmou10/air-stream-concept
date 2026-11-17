@@ -167,9 +167,14 @@ export function ServicePage({ serviceId }: { serviceId: ServiceId }) {
             to="/"
             search={{ service: serviceId }}
             hash="consultation"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold text-primary-foreground transition hover:brightness-105"
+            aria-label={service.quoteLabel}
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold whitespace-nowrap text-primary-foreground transition hover:brightness-105"
           >
-            {service.quoteLabel} <ArrowRight className="h-4 w-4" aria-hidden />
+            <span className="sm:hidden">
+              {service.id === "maintenance" ? "Request a Proposal" : service.quoteLabel}
+            </span>
+            <span className="hidden sm:inline">{service.quoteLabel}</span>
+            <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
       </Reveal>

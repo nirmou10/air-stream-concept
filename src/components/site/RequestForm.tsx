@@ -1,7 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { format, parseISO, startOfToday } from "date-fns";
-import { Check, CheckCircle2, Info } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Building2,
+  Check,
+  CheckCircle2,
+  ClipboardCheck,
+  Factory,
+  Flame,
+  Info,
+  Landmark,
+  Pencil,
+  RotateCcw,
+  Send,
+  Snowflake,
+  Wind,
+  type LucideIcon,
+} from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -132,6 +149,19 @@ const label = "text-sm font-semibold text-foreground";
 const audienceTitle = (id: string) => audiences.find((a) => a.id === id)?.title ?? id;
 const serviceTitle = (id: string) => services.find((s) => s.id === id)?.title ?? id;
 
+const audienceIcons: Record<AudienceId, LucideIcon> = {
+  commercial: Building2,
+  government: Landmark,
+  industrial: Factory,
+};
+
+const serviceIcons: Record<ServiceId, LucideIcon> = {
+  ac: Snowflake,
+  heating: Flame,
+  maintenance: ClipboardCheck,
+  ductless: Wind,
+};
+
 function SelectField({
   id,
   labelText,
@@ -177,11 +207,13 @@ function ChoiceCard({
   onSelect,
   title,
   body,
+  icon: Icon,
 }: {
   pressed: boolean;
   onSelect: () => void;
   title: string;
   body?: string | undefined;
+  icon?: LucideIcon | undefined;
 }) {
   return (
     <button
@@ -198,7 +230,10 @@ function ChoiceCard({
       {pressed ? (
         <Check className="absolute right-3 top-3 h-5 w-5 text-primary" aria-hidden />
       ) : null}
-      <span className="pr-6 font-semibold">{title}</span>
+      <span className="flex items-center gap-2 pr-6 font-semibold">
+        {Icon ? <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden /> : null}
+        {title}
+      </span>
       {body ? <span className="mt-1 text-sm text-muted-foreground">{body}</span> : null}
     </button>
   );
@@ -320,9 +355,9 @@ export function RequestForm({ prefill }: { prefill: Prefill | null }) {
         <button
           type="button"
           onClick={startOver}
-          className="mt-6 inline-flex min-h-12 items-center rounded-lg border border-input px-5 font-semibold hover:bg-muted"
+          className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-input px-5 font-semibold whitespace-nowrap hover:bg-muted"
         >
-          Start over
+          <RotateCcw className="h-4 w-4" aria-hidden /> Start over
         </button>
       </div>
     );
@@ -435,6 +470,7 @@ export function RequestForm({ prefill }: { prefill: Prefill | null }) {
                   onSelect={() => setValue("audience")(a.id)}
                   title={a.title}
                   body={a.body}
+                  icon={audienceIcons[a.id]}
                 />
               ))}
             </div>
@@ -460,6 +496,7 @@ export function RequestForm({ prefill }: { prefill: Prefill | null }) {
                   onSelect={() => setValue("service")(s.id)}
                   title={s.title}
                   body={s.body}
+                  icon={serviceIcons[s.id]}
                 />
               ))}
             </div>
@@ -672,9 +709,9 @@ export function RequestForm({ prefill }: { prefill: Prefill | null }) {
                       setErrors({});
                       setStep(section.step);
                     }}
-                    className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold text-primary underline decoration-steel decoration-2 underline-offset-4 hover:bg-muted"
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-primary underline decoration-steel decoration-2 underline-offset-4 hover:bg-muted"
                   >
-                    Edit
+                    <Pencil className="h-4 w-4" aria-hidden /> Edit
                   </button>
                 </div>
                 <dl className="mt-3 grid gap-2 text-sm">
@@ -696,9 +733,9 @@ export function RequestForm({ prefill }: { prefill: Prefill | null }) {
           <button
             type="button"
             onClick={goBack}
-            className="inline-flex min-h-12 items-center rounded-lg border border-input px-5 font-semibold hover:bg-muted"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-input px-5 font-semibold whitespace-nowrap hover:bg-muted"
           >
-            Back
+            <ArrowLeft className="h-4 w-4" aria-hidden /> Back
           </button>
         ) : (
           <span />
@@ -707,16 +744,16 @@ export function RequestForm({ prefill }: { prefill: Prefill | null }) {
           <button
             type="button"
             onClick={goNext}
-            className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 font-bold text-primary-foreground hover:brightness-105"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold text-primary-foreground whitespace-nowrap hover:brightness-105"
           >
-            Next
+            Next <ArrowRight className="h-4 w-4" aria-hidden />
           </button>
         ) : (
           <button
             type="submit"
-            className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 font-bold text-primary-foreground hover:brightness-105"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold text-primary-foreground whitespace-nowrap hover:brightness-105"
           >
-            Submit demo inquiry
+            Submit demo inquiry <Send className="h-4 w-4" aria-hidden />
           </button>
         )}
       </div>
