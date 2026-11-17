@@ -30,9 +30,11 @@ function CtaLink({
     <a
       href="/#consultation"
       onClick={onClick}
-      className={`inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground transition hover:brightness-105 ${wrap ? "w-full whitespace-normal text-center" : "whitespace-nowrap"} ${className}`}
+      aria-label={cta.primary}
+      className={`inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold whitespace-nowrap text-primary-foreground transition hover:brightness-105 ${wrap ? "w-full" : ""} ${className}`}
     >
-      {cta.primary}
+      <span className="sm:hidden">Request a Consultation</span>
+      <span className="hidden sm:inline">{cta.primary}</span>
     </a>
   );
 }

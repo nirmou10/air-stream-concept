@@ -128,6 +128,62 @@ function HeroInquiry({
   );
 }
 
+export function VisitBlock() {
+  return (
+    <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-sm md:p-8">
+      <h3 className="font-display text-xl font-semibold">Visit or contact Air-Stream</h3>
+      <div className="mt-5 grid gap-6 lg:grid-cols-2">
+        <div className="overflow-hidden rounded-xl border border-border">
+          <iframe
+            title="Map showing Air-Stream at 4343 Dividend, San Antonio, TX 78219"
+            src="https://www.google.com/maps?q=4343+Dividend+San+Antonio+TX+78219&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="h-64 w-full border-0 md:h-80"
+          />
+        </div>
+        <div className="flex flex-col justify-center gap-4">
+          <p className="flex items-start gap-2 text-sm text-muted-foreground">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+            {business.address}
+          </p>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            <a
+              href={business.phoneLocal.href}
+              className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-foreground hover:text-primary"
+            >
+              <Phone className="h-4 w-4" aria-hidden />
+              {business.phoneLocal.display}
+            </a>
+            <a
+              href={business.phoneTollFree.href}
+              className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-foreground hover:text-primary"
+            >
+              <Phone className="h-4 w-4" aria-hidden />
+              {business.phoneTollFree.display}
+            </a>
+          </p>
+          <div>
+            <a
+              href="https://www.google.com/maps/search/api=1&query=4343+Dividend+San+Antonio+TX+78219"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-5 font-bold whitespace-nowrap text-primary-foreground transition hover:brightness-105"
+            >
+              <MapPin className="h-4 w-4" aria-hidden /> Get directions
+            </a>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Please contact Air-Stream to confirm visiting arrangements. Map location as published by
+            the company.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const search = Route.useSearch();
   const [prefill, setPrefill] = useState<Prefill | null>(null);
@@ -173,13 +229,16 @@ function Index() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#consultation"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold text-primary-foreground transition hover:brightness-105"
+                  aria-label={cta.primary}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold whitespace-nowrap text-primary-foreground transition hover:brightness-105"
                 >
-                  {cta.primary} <ArrowRight className="h-4 w-4" aria-hidden />
+                  <span className="sm:hidden">Request a Consultation</span>
+                  <span className="hidden sm:inline">{cta.primary}</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden />
                 </a>
                 <a
                   href={business.phoneLocal.href}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-navy-border px-6 font-semibold hover:bg-navy-border"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-navy-border px-6 font-semibold whitespace-nowrap hover:bg-navy-border"
                 >
                   <Phone className="h-4 w-4" aria-hidden /> Call {business.phoneLocal.display}
                 </a>
@@ -270,9 +329,14 @@ function Index() {
                   <button
                     type="button"
                     onClick={() => requestQuote(s.id)}
-                    className="inline-flex min-h-11 items-center justify-center gap-1 rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground transition hover:brightness-105"
+                    aria-label={s.quoteLabel}
+                    className="inline-flex min-h-11 items-center justify-center gap-1 rounded-lg bg-primary px-4 text-sm font-bold whitespace-nowrap text-primary-foreground transition hover:brightness-105"
                   >
-                    {s.quoteLabel} <ArrowRight className="h-4 w-4" aria-hidden />
+                    <span className="sm:hidden">
+                      {s.id === "maintenance" ? "Request a Proposal" : s.quoteLabel}
+                    </span>
+                    <span className="hidden sm:inline">{s.quoteLabel}</span>
+                    <ArrowRight className="h-4 w-4" aria-hidden />
                   </button>
                   <Link
                     to={s.path}
@@ -398,6 +462,7 @@ function Index() {
           </div>
           <div className="text-foreground lg:col-span-8">
             <RequestForm prefill={prefill} />
+            <VisitBlock />
           </div>
         </div>
       </Reveal>

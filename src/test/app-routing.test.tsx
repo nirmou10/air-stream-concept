@@ -11,6 +11,7 @@ import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
 import { audiences, cta, services, type AudienceId, type ServiceId } from "@/content/site";
+import { VisitBlock } from "@/routes/index";
 import { Route as AcRoute } from "@/routes/air-conditioning-service-installation";
 import { Route as CommercialRoute } from "@/routes/commercial";
 import { Route as DuctlessRoute } from "@/routes/ductless-hvac-services";
@@ -69,6 +70,26 @@ describe("Service pages", () => {
       expect(ctaLink).toHaveAttribute("href", expect.stringContaining(`service=${service.id}`));
     });
   }
+});
+
+describe("Homepage visit block", () => {
+  it("renders a titled map iframe and tel links", () => {
+    render(<VisitBlock />);
+
+    const iframe = screen.getByTitle(/Map showing Air-Stream/);
+    expect(iframe.tagName).toBe("IFRAME");
+
+    const telLinks = screen
+      .getAllByRole("link")
+      .filter((link) => link.getAttribute("href")?.startsWith("tel:"));
+    expect(telLinks.length).toBeGreaterThanOrEqual(2);
+    for (const link of screen.getAllByRole("link", { name: /210-533-3264/ })) {
+      expect(link).toHaveAttribute("href", "tel:+12105333264");
+    }
+    for (const link of screen.getAllByRole("link", { name: /800-223-8017/ })) {
+      expect(link).toHaveAttribute("href", "tel:+18002238017");
+    }
+  });
 });
 
 describe("Audience pages", () => {

@@ -185,9 +185,12 @@ export function AudiencePage({ audienceId }: { audienceId: AudienceId }) {
             to="/"
             search={{ audience: audienceId }}
             hash="consultation"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold text-primary-foreground transition hover:brightness-105"
+            aria-label={cta.primary}
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-bold whitespace-nowrap text-primary-foreground transition hover:brightness-105"
           >
-            {cta.primary} <ArrowRight className="h-4 w-4" aria-hidden />
+            <span className="sm:hidden">Request a Consultation</span>
+            <span className="hidden sm:inline">{cta.primary}</span>
+            <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
       </Reveal>
